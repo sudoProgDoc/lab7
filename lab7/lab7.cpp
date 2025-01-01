@@ -2,9 +2,6 @@
 #include <tgmath.h>
 #include <string>
 using namespace std;
-using std::cout;
-using std::cin;
-using std::endl;
 
 void func_dots(float xn)
 {
@@ -20,7 +17,7 @@ void func_dots(float xn)
         cout << sin(xn) / xn << endl;
         return;
     }
-    while (xn <= 4) //можно переписать на фор
+    while (xn <= 4)
     {
         cout << sin(xn) / xn << endl;
         xn += i;
