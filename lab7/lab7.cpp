@@ -12,12 +12,12 @@ void func_dots(float xn)
         cout << "Граница должна быть больше 0 и не больше 4" << endl;
         return;
     }
-    else if (xn == 4)
+    else if (xn == 4)//если точка единственная, т.е. совпадает с правой границей
     {
         cout << sin(xn) / xn << endl;
         return;
     }
-    while (xn <= 4)
+    while (xn <= 4)//если точек много
     {
         cout << sin(xn) / xn << endl;
         xn += i;
@@ -31,27 +31,23 @@ void fib(int maxx)
         cout << "Сумма должна быть положительной" << endl;
         return;
     }
-    int x1, x2, t, s, n;
-    x1 = 1;
-    x2 = 1;
-    s = 2;
-    n = 2;
+    int x1 = 1, x2 = 1, t, s = 2, n = 2;
     while (s + x1 + x2 <= maxx) //1 1 2 3 5 8
     {
-        t = x2;
+        t = x2;//буферная переменная
         x2 = x1 + t;
         x1 = t;
-        s += x2;
-        n++;
+        s += x2;//сумма
+        n++;//счетчик итераций
     }
     if (maxx == 1) 
     {
-        cout << "Сумма равна: 1" << endl << "Количество равно: 1" << endl;
+        cout << "Сумма равна: 1\nКоличество равно: 1\n";
         return;
     }
     else if (maxx == 2)
     {
-        cout << "Сумма равна: 2" << endl << "Количество равно: 2" << endl;
+        cout << "Сумма равна: 2\nКоличество равно: 2\n";
         return;
     }
     cout << "Сумма равна: " << s << endl;
@@ -65,24 +61,28 @@ int main(void)
     float x;
     cout << "Введите начальную точку интервала возможных значений функции: ";
     cin >> s;
-    try // мне кажется траи написаны неправильно, возможно их поправить нужно
+    try
     {
-        x = std::stof(s);
+        x = stof(s);
     }
-    catch (const std::invalid_argument)
+    catch (invalid_argument)
     {
         cout << "Нужно ввести число";
     }
-    if (s == "0") cout << "Граница не может быть равна 0" << endl;
-    else func_dots(std::stof(s));
+    if (s == "0")
+    {
+        cout << "Граница не может быть равна 0" << endl;
+        return 1;
+    }
+    else func_dots(stof(s));
+
     cout << "Введите MAX для ряда Фибоначчи: ";
     cin >> s;
     try
     {
-        maxx = std::stoi(s);
-        return 1;
+        maxx = stoi(s);
     }
-    catch (const std::invalid_argument)
+    catch (invalid_argument)
     {
         cout << "Нужно ввести число";
         return 1;
